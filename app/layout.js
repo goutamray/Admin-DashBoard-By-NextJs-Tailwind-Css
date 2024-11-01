@@ -1,4 +1,5 @@
 
+import SideBar from "./components/SideBar";
 import "./globals.css";
 
 export const metadata = {
@@ -10,6 +11,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <main className="main w-full">
+           <SideBar />
+        </main>
         {children}
       </body>
     </html>
