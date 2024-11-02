@@ -3,6 +3,9 @@
 import Image from "next/image"
 import logofull from "@/public/logo-full.png"
 import Link from "next/link"
+import Button from '@mui/material/Button';
+
+// react icons 
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { IoCartOutline } from "react-icons/io5";
 import { MdRocket } from "react-icons/md";
@@ -14,8 +17,17 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { IoMailOpenOutline } from "react-icons/io5";
 import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import { FaAngleDown } from "react-icons/fa6"; 
+import { useState } from "react";
 
 const SideBar = () => {
+  const [openMenu, setOpenMenu] = useState(false); 
+
+  // handle open sub menu 
+  const handleSubMenu = () => {
+    setOpenMenu((prev) => !prev);
+  };
+  
+
   return (
     <div className="sidebarwrapper fixed top-0 left-0 bg-white w-[19%] h-full border-r px-5 py-3" >
       <Link href="/"> 
@@ -27,27 +39,33 @@ const SideBar = () => {
          </h2>
       </div>
 
-      <ul className="mb-0 mt-0">
+      <ul className="mb-0 mt-0 max-h-[75vh] overflow-y-scroll overflow-x-hidden">
         <li>
           <Link href="/" className="text-[#525252] text-[14px] capitalize font-medium rounded transition-all duration-300 flex gap-2 items-center hover:bg-[#f5f5f5] px-3 py-3 ">
              <span> <IoCartOutline className="text-2xl font-medium"/> </span> Ecommerce 
           </Link>
         </li>
-        <li>
-          <div className="text-[#171717] text-[14px] capitalize font-medium rounded transition-all duration-300 flex gap-2 items-center hover:bg-[#f5f5f5] px-3 py-3 cursor-pointer">
-            <span><RiProductHuntLine className="text-2xl font-medium" /></span> Products <FaAngleDown className="ml-auto"/>
-          </div>
-          <ul className="px-3 py-2">
+        <li className="relative">
+          <Button className="text-[#171717] w-full text-[14px] capitalize font-medium rounded transition-all duration-300 flex gap-2 items-center hover:bg-[#f5f5f5] px-3 py-3 cursor-pointer" onClick={handleSubMenu}>
+            <span><RiProductHuntLine className="text-2xl font-medium" /></span> Products <FaAngleDown className={`ml-auto ${openMenu === true ? "rotate-180" : ""}`}/>
+          </Button> 
+          {
+            openMenu && <ul className="px-3 py-2 " >
             <li >
-              <Link href="/" className="text-[#171717] text-[14px] capitalize font-medium rounded transition-all duration-300 flex gap-2 items-center hover:bg-[#f5f5f5] px-3 py-2"> Upload Product </Link>
-            </li>
-            <li >
-              <Link href="/" className="text-[#171717] text-[14px] capitalize font-medium rounded transition-all duration-300 flex gap-2 items-center hover:bg-[#f5f5f5] px-3 py-2 "> Product List </Link>
-            </li>
-            <li >
-              <Link href="/" className="text-[#171717] text-[14px] capitalize font-medium rounded transition-all duration-300 flex gap-2 items-center hover:bg-[#f5f5f5] px-3 py-2"> Add new Product </Link>
-            </li>
-          </ul>
+               <Link href="/" className="text-[#171717] text-[14px] capitalize font-medium rounded transition-all duration-300 flex gap-2 items-center hover:bg-[#f5f5f5] px-3 py-2"> Add new Product </Link>
+             </li>
+             <li >
+               <Link href="/" className="text-[#171717] text-[14px] capitalize font-medium rounded transition-all duration-300 flex gap-2 items-center hover:bg-[#f5f5f5] px-3 py-2 "> Product List </Link>
+             </li>
+             <li >
+               <Link href="/" className="text-[#171717] text-[14px] capitalize font-medium rounded transition-all duration-300 flex gap-2 items-center hover:bg-[#f5f5f5] px-3 py-2"> Product Details  </Link>
+             </li>
+             <li >
+               <Link href="/" className="text-[#171717] text-[14px] capitalize font-medium rounded transition-all duration-300 flex gap-2 items-center hover:bg-[#f5f5f5] px-3 py-2"> Add Product Brand </Link>
+             </li>
+           </ul>
+          }
+          
         </li>
         <li>
           <Link href="/" className="text-[#171717] text-[14px] capitalize font-medium rounded transition-all duration-300 flex gap-2 items-center hover:bg-[#f5f5f5] px-3 py-3 ">
@@ -86,7 +104,9 @@ const SideBar = () => {
         </li>
         <li>
           <Link href="/" className="text-[#171717] text-[14px] capitalize font-medium rounded transition-all duration-300 flex gap-2 items-center hover:bg-[#f5f5f5] px-3 py-3 ">
-             <span> <RiLogoutBoxRLine className="text-2xl font-semibold"/> </span> LogOut  
+             <span> 
+              <RiLogoutBoxRLine className="text-2xl font-semibold"/> 
+             </span> LogOut  
           </Link>
         </li>
       </ul>

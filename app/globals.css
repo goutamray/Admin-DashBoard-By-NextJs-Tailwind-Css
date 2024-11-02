@@ -9,4 +9,6 @@ body{
   font-family: "Inter", sans-serif;
 }
 
-
+::-webkit-scrollbar{width: 5px; height: 5px;}
+::-webkit-scrollbar-thumb{ background : #ccc !important}
+::-webkit-scrollbar-thumb-track{ background : #fff !important}
