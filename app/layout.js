@@ -1,6 +1,5 @@
 
-import Header from "./components/Header";
-import SideBar from "./components/SideBar";
+import ThemeProvider from "./context/ThemeProvider";
 
 import "./globals.css";
 
@@ -14,13 +13,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <main className="main w-full">
-           <SideBar />
-           <div className="right-content pl-[19%]">
-             <Header /> 
-           </div>
-        </main>
-        {children}
+        <ThemeProvider> 
+              { children }
+         </ThemeProvider>
       </body>
     </html>
   );

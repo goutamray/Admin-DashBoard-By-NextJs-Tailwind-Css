@@ -12,3 +12,18 @@ body{
 ::-webkit-scrollbar{width: 5px; height: 5px;}
 ::-webkit-scrollbar-thumb{ background : #ccc !important}
 ::-webkit-scrollbar-thumb-track{ background : #fff !important}
+
+
+.transition-sidebar{
+  transition: all 0.3s ease-in-out;
+}
+/* sidebar open close css */
+.right-content.open{
+  padding-left: 19% !important;
+  transition: all 0.3s ease-in-out;
+}
+.right-content.close{
+ padding-left: 6% !important;
+}
+
+

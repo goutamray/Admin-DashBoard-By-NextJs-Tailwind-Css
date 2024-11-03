@@ -12,6 +12,8 @@ import { LuMailOpen } from "react-icons/lu";
 import { useState } from "react";
 import userPhoto from "@/public/goutamray.png"
 
+import { MyContext } from "@/app/context/ThemeContext"
+import { useContext } from "react"
 
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
@@ -45,11 +47,13 @@ const Header = () => {
     setNotificationDropDrop(null);
   };
 
+  const context = useContext(MyContext)
+
   return (
     <>
       <div className='bg-white px-4 py-2 w-full flex items-center '>
        <div className="flex items-center gap-3">
-          <button className="h-10 w-10 hover:bg-[#f1f1f1] transition-all duration-300 rounded-full flex items-center justify-center "> 
+          <button className="h-10 w-10 hover:bg-[#f1f1f1] transition-all duration-300 rounded-full flex items-center justify-center" onClick={() => context.sideBarOpenCloseFun()}> 
              <HiOutlineMenuAlt2 className="text-xl text-black "/> 
           </button>
           <button className="h-10 w-10 hover:bg-[#f1f1f1] transition-all duration-300 rounded-full flex items-center justify-center "> 
